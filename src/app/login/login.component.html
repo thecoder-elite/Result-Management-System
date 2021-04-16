@@ -1,0 +1,36 @@
+<div class="loginHeader">
+
+</div>
+<div class="container">
+    <div class="login-container"> 
+        
+        <img src="../assets/logo.png" id="loginLogo"/>
+        <div class="login-form-container">
+            <form #loginForm = "ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>User ID</mat-label>
+                    <input 
+                    matInput
+                    name="userid"
+                    id="userid" 
+                    type="text"
+                    ngModel/>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Password</mat-label>
+                    <input 
+                    matInput
+                    name="password"
+                    id="password" 
+                    type="password" 
+                    autocomplete="off"
+                    ngModel/>
+                  </mat-form-field>
+                
+                  <button type="submit" mat-raised-button color="primary" id="submitbutton">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

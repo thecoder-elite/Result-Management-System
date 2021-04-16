@@ -1,0 +1,66 @@
+#addExamContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#addExamContainer h1{
+    font-size: 50px;
+    margin: 40px;
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.mat-form-field{
+    width: 750px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+#addExamButton{
+    width: 750px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+/* nav-bar */
+.nav-container{
+    background-color: #3f51b5;
+    height: max-content;
+    width: 100%;
+}
+.navbar{
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+.navbar a{
+    padding: 0 15px;
+}
+#nav-logo{
+    width: 100px;
+    height: 100px;
+}
+nav a:link, a:active, a:visited{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+a:hover:not(#navLogo){
+    text-decoration: underline;
+}
+
+.navIcon{
+    height: 15px;
+    width: 15px;
+    padding: 0 5px;
+}

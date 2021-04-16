@@ -1,0 +1,63 @@
+<div class="nav-container">
+  <nav class="navbar">
+    <a routerLink="/home"><img src="../../assets/navLogo.png" id="nav-logo" /></a>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/addExam">Add Exam</a>
+    <a routerLink="/student">Exam Details</a>
+    <a href="#" (click)="logout()"><img src="../../assets/logout.svg" class="navIcon" /> Logout</a>
+  </nav>
+</div>
+
+<div class="student-container">
+
+  <div class="studentDetailsContainer">
+    <form id="addStudentForm" #addStudentForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" id="idContainer">
+        <mat-label>Exam ID</mat-label>
+        <input matInput value="{{examId}}">
+      </mat-form-field>
+      <button mat-raised-button color="primary" id="getStudents">Get Students</button>
+      <button mat-button color="primary" (click)="gotoAddStudent()" id="addStudent">Add Students</button>
+    </form>
+
+    <div class="detailsContainer">
+      <table id="detailsTable">
+        <tr>
+          <th>Subject</th>
+          <span *ngFor="let detail of details">
+            <td>{{detail.subject}}</td>
+          </span>
+        </tr>
+        <tr>
+          <th>Date</th>
+          <span *ngFor="let detail of details">
+            <td>{{detail.date}}</td>
+          </span>
+        </tr>
+        <tr>
+          <th>Time</th>
+          <span *ngFor="let detail of details">
+            <td>{{detail.time}}</td>
+          </span>
+        </tr>
+      </table>
+    </div>
+
+    <table id="studentTable">
+      <tr>
+        <th>Action</th>
+        <th>Student ID</th>
+        <th>Department</th>
+        <th>Year</th>
+        <th *ngFor="let subject of subjects">{{subject}}</th>
+      </tr>
+      <tr *ngFor="let student of students" id="{{student.studentID}}" >
+        <button class="deleteButton" (click)="deleteStudent($event)">Delete data</button>
+        <td>{{student.studentID}}</td>
+        <td>{{student.studentDepartment}}</td>
+        <td>{{student.studentYear}}</td>
+        <td *ngFor="let mark of student.marks">{{mark}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

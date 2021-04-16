@@ -1,0 +1,108 @@
+<div class="nav-container">
+    <nav class="navbar">
+        <a routerLink="/home"><img src="../../assets/navLogo.png" id="nav-logo" /></a>
+        <a routerLink="/home">Home</a>
+        <a routerLink="/addExam">Add Exam</a>
+        <a routerLink="/student">Exam Details</a>
+        <a href="#" (click)="logout()"><img src="../../assets/logout.svg" class="navIcon" /> Logout</a>
+    </nav>
+</div>
+
+<div id="addExamContainer">
+    <h1> Add New Exam Details</h1>
+    <form #addExamForm="ngForm" id="addExamForm" [formGroup]="ExamInfo" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Exam ID</mat-label>
+            <input matInput formControlName="examID" type="text" placeholder="Enter Exam ID" required minlength="5"/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Exam Name</mat-label>
+            <input matInput formControlName="examName" type="text" placeholder="Enter Exam Name" required minlength="5" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <!-- <mat-label>Exam Start Date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker> -->
+            <mat-label>Exam Start Date</mat-label>
+            <input matInput formControlName="examStartDate" type="date" placeholder="Enter Exam Start Date" required />
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Exam End Date</mat-label>
+            <input matInput formControlName="examEndDate" type="date" placeholder="Enter Exam End Date" required/>
+        </mat-form-field>
+
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Select year </mat-label>
+                <mat-select id="addYear" formControlName="forYear" aria-required>
+                    <mat-option *ngFor="let year of years" [value]="year">
+                        {{year}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Select Department </mat-label>
+                <mat-select id="addDepartment" formControlName="forDepartment" aria-required>
+                    <mat-option *ngFor="let department of departments" [value]="department">
+                        {{department}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Total No. Subjects: </mat-label>
+                <input matInput formControlName="totalSubjects" type="number" readonly/>
+            </mat-form-field>
+        </div>
+        <div *ngFor="let no of noOfExams">
+            <div style="display: flex; justify-content: space-between; flex-direction: column; width: 750px;">
+                <mat-label>Subject {{no+1}}</mat-label>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter Subject Name</mat-label>
+                    <input matInput type="text" placeholder="Enter Subject Name" formControlName="subject_{{no}}"  />
+                </mat-form-field>
+            </div>
+            <div style="display: flex; justify-content: space-between; width: 750px;">
+                <mat-form-field appearance="fill">
+                    <mat-label>Maximum Marks</mat-label>
+                    <input matInput type="number" placeholder="Enter Max Marks"
+                        formControlName="subject_{{no}}_marks"  />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Exam Date</mat-label>
+                    <input matInput type="date" placeholder="Enter Exam Date" formControlName="subject_{{no}}_date" />
+                </mat-form-field>
+            </div>
+            <div style="display: flex; justify-content: space-between; width: 750px;">
+                <mat-form-field appearance="fill">
+                    <mat-label>Start Time</mat-label>
+                    <input matInput type="time" placeholder="Enter Exam Start Time"
+                        formControlName="subject_{{no}}_startTime" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>End Time</mat-label>
+                    <input matInput type="time" placeholder="Enter Exam End Time"
+                        formControlName="subject_{{no}}_endTime" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <button mat-fab style="margin: 20px;" type="button" (click)="addSubjectDetails()">
+                <mat-icon>add</mat-icon>
+            </button>
+            <button mat-fab style="margin: 20px;" type="button" (click)="removeSubjectDetails()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" id="addExamButton">Submit</button>
+    </form>
+</div>

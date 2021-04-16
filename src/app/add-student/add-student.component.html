@@ -1,0 +1,54 @@
+<div class="nav-container">
+    <nav class="navbar">
+        <a routerLink="/home"><img src="../../assets/navLogo.png" id="nav-logo"/></a>
+        <a routerLink="/home">Home</a>
+        <a routerLink="/addExam">Add Exam</a>
+        <a routerLink="/student">Exam Details</a>
+        <a href="#" (click)="logout()"><img src="../../assets/logout.svg" class="navIcon"/> Logout</a>
+    </nav>
+</div>
+
+<div class="add-student-container">
+    <h1 style="font-size: 50px; margin: 40px;">Add Student Record</h1>
+    <form #addStudentForm="ngForm" id="addStudentForm" (ngSubmit)="onSubmit()" [formGroup]="form">  
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Exam ID</mat-label>
+            <input matInput name="examID" type="text" placeholder="Exam ID" formControlName="examID" readonly/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Exam Name</mat-label> 
+            <input matInput name="examName" type="text" placeholder="Exam Name" formControlName="examName" readonly/>
+        </mat-form-field>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Select year </mat-label>
+                <input matInput name = "year" type="number" placeholder="Enter Student Year"  formControlName="studentYear" readonly/>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Select Department </mat-label>
+                <input matInput name = "department" type="text" placeholder="Enter Student Department"  formControlName="studentDepartment" readonly/>
+            </mat-form-field>
+        </div>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Student ID</mat-label>
+            <input matInput name="addStudentID" type="text" placeholder="Enter Student ID" formControlName="studentID" required/>
+        </mat-form-field>
+        <div *ngFor="let no of noOfSubjects">
+            <div style="display: flex; justify-content: space-between; width: 750px;">
+            <mat-form-field appearance="fill">
+                <mat-label>Subject {{no+1}} Name</mat-label>
+                <input matInput  type="text" placeholder="Subject {{no+1}} Name" formControlName="subject_{{no}}" readonly />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Subject {{no+1}} Marks</mat-label>
+                <input matInput  type="number" placeholder="Subject {{no+1}} Marks" formControlName="subject_{{no}}_marks" required/>
+            </mat-form-field>
+            </div>
+        </div>
+        <button mat-raised-button color="primary" type="submit" id="addStudentButton">Submit</button>
+    </form>
+</div>

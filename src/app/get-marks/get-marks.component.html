@@ -1,0 +1,56 @@
+<div class="nav-container">
+    <nav class="navbar">
+        <a routerLink="/exams"><img src="../../assets/navLogo.png" id="nav-logo" /></a>
+        <a routerLink="/exams">Exams</a>
+        <a routerLink="/marks">Marks</a>
+        <a href="#" (click)="logout()"><img src="../../assets/logout.svg" class="navIcon" /> Logout</a>
+    </nav>
+</div>
+
+<div class="student-container">
+    <div class="detailsContainer">
+        <h1>Exam TimeTable</h1>
+        <table id="detailsTable">
+            <tr>
+                <th>Subject</th>
+                <span *ngFor="let detail of details">
+                    <td>{{detail.subject}}</td>
+                </span>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <span *ngFor="let detail of details">
+                    <td>{{detail.date}}</td>
+                </span>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <span *ngFor="let detail of details">
+                    <td>{{detail.time}}</td>
+                </span>
+            </tr>
+        </table>
+    </div>
+    <div class="detailsContainer" style="margin: 1rem 0;">
+        <h1>Marks</h1>
+        <table id="studentTable" >
+            <tr>
+              <th *ngFor="let subject of subjects">{{subject}}</th>
+            </tr>
+            <tr *ngFor="let student of students">
+              <td *ngFor="let mark of student.marks">{{mark}}</td>
+            </tr>
+          </table>
+    </div>
+    <div class="detailsContainer" style="margin: 1rem 0;">
+        <h1>Total Percentage</h1>
+        <table id="studentTable" style="display: flex; flex-direction: row;">
+            <tr>
+              <th >Percentage</th>
+            </tr>
+            <tr >
+              <td >{{percentage}}</td>
+            </tr>
+          </table>
+    </div>
+</div>

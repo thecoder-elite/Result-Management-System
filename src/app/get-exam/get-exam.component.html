@@ -1,0 +1,33 @@
+<div class="nav-container">
+    <nav class="navbar">
+        <a routerLink="/exams"><img src="../../assets/navLogo.png" id="nav-logo"/></a>
+        <a routerLink="/exams">Exams</a>
+        <a routerLink="/marks">Marks</a>
+        <a href="#" (click)="logout()"><img src="../../assets/logout.svg" class="navIcon"/> Logout</a>
+    </nav>
+</div>
+<div class="container">
+
+    <div class="tableContainer">
+        <table id="examTable">
+            <tr>
+                <th>Exam ID</th>
+                <th>Exam Name</th>
+                <th>Exam Start Date</th>
+                <th>Exam End Date</th>
+                <th>Department</th>
+                <th>Year</th>
+                <th>Total Subjects</th>
+            </tr>
+            <tr *ngFor="let exam of exams" (click)="gotoExam(exam.examID)">
+                <td>{{exam.examID}}</td>
+                <td>{{exam.examName}}</td>
+                <td>{{exam.examStartDate}}</td>
+                <td>{{exam.examEndDate}}</td>
+                <td>{{exam.forDepartment}}</td>
+                <td>{{exam.forYear}}</td>
+                <td>{{exam.totalSubjects}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
